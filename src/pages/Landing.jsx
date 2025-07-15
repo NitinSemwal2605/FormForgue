@@ -25,7 +25,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Product Manager",
     company: "TechCorp",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    // avatar removed
     content: "FormForge has revolutionized how we collect customer feedback. The analytics are incredible!",
     rating: 5
   },
@@ -33,7 +33,7 @@ const testimonials = [
     name: "Michael Chen",
     role: "Marketing Director",
     company: "GrowthLab",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    // avatar removed
     content: "The drag-and-drop interface is so intuitive. We've reduced form creation time by 80%.",
     rating: 5
   },
@@ -41,7 +41,7 @@ const testimonials = [
     name: "Emily Rodriguez",
     role: "UX Designer",
     company: "DesignStudio",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    // avatar removed
     content: "Beautiful forms that match our brand perfectly. The customization options are endless.",
     rating: 5
   }
@@ -438,7 +438,9 @@ const Landing = () => {
                   className="p-10 rounded-3xl bg-gradient-to-br from-gray-900/80 to-black border border-blue-900/40 shadow-2xl flex flex-col items-center text-center mx-2 animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full mb-4 border-4 border-blue-500 shadow-lg" />
+                  <div className="w-20 h-20 rounded-full mb-4 border-4 border-blue-500 shadow-lg bg-blue-900 flex items-center justify-center text-3xl font-bold text-white">
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </div>
                   <div className="flex mb-2 justify-center">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />

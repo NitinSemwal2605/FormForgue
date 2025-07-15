@@ -17,7 +17,7 @@ export default function Documentation() {
     <div className="min-h-screen bg-black text-white flex">
       {/* Sidebar */}
       <aside className="w-64 min-h-screen bg-gray-900/90 border-r border-gray-800 p-6 flex flex-col gap-6 fixed top-0 left-0 h-full z-40">
-        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Docs</h2>
+        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Documentation</h2>
         <nav className="flex flex-col gap-2">
           {sections.map((section) => (
             <button
@@ -42,8 +42,8 @@ export default function Documentation() {
         {active === 'filestructure' && (
           <section>
             <h1 className="text-3xl font-bold mb-4 text-blue-400">File Structure</h1>
-            <img src="/docs-file-structure.png" alt="Project File Structure Example" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" />
-            <p className="text-center text-gray-400 text-xs mb-6">Example: Visual representation of the project file structure.</p>
+            {/* <img src="/docs-file-structure.png" alt="Project File Structure Example" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" /> */}
+            {/* <p className="text-center text-gray-400 text-xs mb-6">Example: Visual representation of the project file structure.</p> */}
             <pre className="bg-gray-800 rounded-lg p-4 text-sm overflow-x-auto mb-4">
 {`
 FormForge/
@@ -95,8 +95,8 @@ FormForge/
         {active === 'idea' && (
           <section>
             <h1 className="text-3xl font-bold mb-4 text-blue-400">Project Idea</h1>
-            <img src="/docs-idea.png" alt="Project Idea Illustration" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" />
-            <p className="text-center text-gray-400 text-xs mb-6">Illustration: The vision and use cases for FormForge.</p>
+            {/* <img src="/docs-idea.png" alt="Project Idea Illustration" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" /> */}
+            {/* <p className="text-center text-gray-400 text-xs mb-6">Illustration: The vision and use cases for FormForge.</p> */}
             <p className="text-gray-300 mb-4">FormForge is a full-stack, modern form builder platform. The vision is to empower users to create, share, and analyze forms with a beautiful, intuitive UI and robust backend. <b>Key goals:</b></p>
             <ul className="list-disc list-inside text-gray-200 space-y-2 mb-4">
               <li>Drag-and-drop form builder for all skill levels</li>
@@ -259,8 +259,8 @@ flowchart TD
         {active === 'build' && (
           <section>
             <h1 className="text-3xl font-bold mb-4 text-blue-400">Build Process</h1>
-            <img src="/docs-form-builder.png" alt="Form Builder Screenshot" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" />
-            <p className="text-center text-gray-400 text-xs mb-6">Screenshot: The drag-and-drop form builder in action.</p>
+            {/* <img src="/docs-form-builder.png" alt="Form Builder Screenshot" className="rounded-lg mb-4 border border-gray-700 shadow-lg w-full max-w-xl mx-auto" /> */}
+            {/* <p className="text-center text-gray-400 text-xs mb-6">Screenshot: The drag-and-drop form builder in action.</p> */}
             <h2 className="text-xl font-semibold mt-6 mb-2 text-purple-400">Step-by-Step</h2>
             <ol className="list-decimal list-inside text-gray-200 space-y-2 mb-4">
               <li><b>Backend Setup:</b> Initialize Node.js project, install Express, Mongoose, bcrypt, JWT, and CORS. Set up MongoDB connection.</li>
