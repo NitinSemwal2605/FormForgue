@@ -135,7 +135,7 @@ export default function Dashboard() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           <Card className="bg-white/5 backdrop-blur-xl border-white/10 text-white shadow-2xl hover:bg-white/10 transition-all duration-300">
             <CardHeader className="pb-2">
               <CardTitle className="text-white text-2xl">{forms.length}</CardTitle>
@@ -186,9 +186,9 @@ export default function Dashboard() {
         </div>
 
         {/* Controls */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-8 w-full">
           {/* Search */}
-          <div className="relative flex-1">
+          <div className="relative flex-1 min-w-0">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
               type="text"
@@ -197,14 +197,14 @@ export default function Dashboard() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-800/50 backdrop-blur-sm text-white placeholder-gray-400 shadow-sm"
             />
-            </div>
+          </div>
 
-          {/* Filters */}
-          <div className="flex gap-3">
+          {/* Filters and Actions */}
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="px-4 py-3 border border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-800/50 backdrop-blur-sm text-white shadow-sm"
+              className="px-4 py-3 border border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-800/50 backdrop-blur-sm text-white shadow-sm w-full sm:w-auto"
             >
               <option value="all">All Categories</option>
               <option value="feedback">Feedback</option>
@@ -214,27 +214,27 @@ export default function Dashboard() {
             </select>
 
             {/* View Mode Toggle */}
-            <div className="flex border border-gray-700 rounded-xl overflow-hidden bg-gray-800/50 backdrop-blur-sm shadow-sm">
+            <div className="flex border border-gray-700 rounded-xl overflow-hidden bg-gray-800/50 backdrop-blur-sm shadow-sm w-full sm:w-auto">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`px-4 py-3 transition-colors ${viewMode === 'grid' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}
+                className={`flex-1 px-4 py-3 transition-colors ${viewMode === 'grid' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode('table')}
-                className={`px-4 py-3 transition-colors ${viewMode === 'table' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}
+                className={`flex-1 px-4 py-3 transition-colors ${viewMode === 'table' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:text-white hover:bg-gray-700/50'}`}
               >
                 <List className="w-4 h-4" />
               </button>
             </div>
 
-            <Link to="/forms/new">
-              <Button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/20">
+            <Link to="/forms/new" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold shadow-lg border border-white/20 flex items-center justify-center">
                 <Plus className="w-4 h-4 mr-2" />
                 Create Form
               </Button>
-              </Link>
+            </Link>
           </div>
         </div>
 
@@ -265,7 +265,7 @@ export default function Dashboard() {
           </Card>
         ) : viewMode === 'grid' ? (
           // Grid View
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredForms.map((form, idx) => (
               <Card 
                   key={form._id}
