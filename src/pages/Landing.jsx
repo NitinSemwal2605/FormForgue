@@ -1,6 +1,5 @@
-import React from 'react';
 import { ArrowRight, BarChart3, Shield, Star, Users, Zap } from 'lucide-react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -326,6 +325,38 @@ const Landing = () => {
         `}</style>
       </section>
 
+      
+
+      {/* Features Section */}
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Everything You Need to
+              <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"> Succeed</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Powerful features designed to help you create, manage, and optimize your forms for maximum conversion.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group p-8 rounded-2xl bg-black border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-xl animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="w-full py-20 bg-black relative z-10">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tight">Pricing</h2>
@@ -375,36 +406,7 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Everything You Need to
-              <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"> Succeed</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Powerful features designed to help you create, manage, and optimize your forms for maximum conversion.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="group p-8 rounded-2xl bg-black border border-gray-800 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 shadow-xl animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* Testimonials Section (Swiper Carousel) */}
       <section id="testimonials" className="py-24 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
         <div className="max-w-4xl mx-auto">
