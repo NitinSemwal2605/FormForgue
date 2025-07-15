@@ -456,6 +456,21 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Documentation Section */}
+      <section id="documentation" className="w-full py-20 bg-black relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tight">Documentation</h2>
+          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+            Learn how to use FormForge to build, share, and analyze forms. Discover the features, best practices, and the story behind how this platform was built.
+          </p>
+          <a href="/documentation" className="inline-block">
+            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg">
+              View Full Documentation
+            </Button>
+          </a>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative z-10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center md:items-start animate-fade-in-up">

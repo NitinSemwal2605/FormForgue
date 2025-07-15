@@ -7,6 +7,7 @@ import { ToastProvider } from './contexts/ToastContext'
 import Analytics from './pages/Analytics'
 import Auth from './pages/Auth'
 import Dashboard from './pages/Dashboard'
+import Documentation from './pages/Documentation'
 import FormBuilder from './pages/FormBuilder'
 import FormView from './pages/FormView'
 import Landing from './pages/Landing'
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/" element={<Landing />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/form/:shareUrl" element={<PublicForm />} />
+                <Route path="/documentation" element={<Documentation />} />
                 
                 {/* Protected Routes - Require Authentication */}
                 <Route path="/dashboard" element={

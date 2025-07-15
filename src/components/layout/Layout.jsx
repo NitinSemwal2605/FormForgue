@@ -22,9 +22,10 @@ export default function Layout({ children }) {
   // Check if we're on pages that don't need layout
   const isLandingPage = location.pathname === '/'
   const isAuthPage = location.pathname === '/auth'
+  const isDocsPage = location.pathname === '/documentation'
 
-  // Don't render layout for landing page or auth page
-  if (isLandingPage || isAuthPage) {
+  // Don't render layout for landing page, auth page, or documentation page
+  if (isLandingPage || isAuthPage || isDocsPage) {
     return children
   }
 
