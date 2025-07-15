@@ -310,7 +310,7 @@ export default function Dashboard() {
             {filteredForms.map((form, idx) => (
               <Card 
                   key={form._id}
-                className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10"
+                className="group transition-all duration-300 hover:scale-[1.03] border-0 shadow-xl bg-white/5 backdrop-blur-xl border-white/10 hover:bg-white/10 rounded-2xl p-2 ring-1 ring-inset ring-blue-900/10 hover:ring-blue-500/20"
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
@@ -346,46 +346,37 @@ export default function Dashboard() {
 
                 <CardFooter className="pt-0">
                   <div className="flex flex-col gap-2 w-full">
-                    {/* First row - View, Edit, Analytics */}
-                    <div className="flex gap-2 w-full">
-                      <Link to={`/forms/${form._id}`} className="flex-1">
-                        <Button variant="outline" size="sm" className="w-full border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white">
-                          <Eye className="w-4 h-4 mr-1" />
-                          View
+                    <div className="grid grid-cols-5 gap-2 w-full mt-2">
+                      <Link to={`/forms/${form._id}`} className="flex">
+                        <Button variant="outline" size="icon" className="h-8 w-8 p-0 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg shadow-sm flex items-center justify-center">
+                          <Eye className="w-4 h-4" />
                         </Button>
                       </Link>
-                      <Link to={`/forms/${form._id}/edit`} className="flex-1">
-                        <Button variant="outline" size="sm" className="w-full border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white">
-                          <Edit className="w-4 h-4 mr-1" />
-                          Edit
+                      <Link to={`/forms/${form._id}/edit`} className="flex">
+                        <Button variant="outline" size="icon" className="h-8 w-8 p-0 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg shadow-sm flex items-center justify-center">
+                          <Edit className="w-4 h-4" />
                         </Button>
                       </Link>
-                      <Link to={`/forms/${form._id}/analytics`} className="flex-1">
-                        <Button variant="outline" size="sm" className="w-full border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white">
-                          <BarChart3 className="w-4 h-4 mr-1" />
-                          Analytics
+                      <Link to={`/forms/${form._id}/analytics`} className="flex">
+                        <Button variant="outline" size="icon" className="h-8 w-8 p-0 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg shadow-sm flex items-center justify-center">
+                          <BarChart3 className="w-4 h-4" />
                         </Button>
                       </Link>
-                    </div>
-                    {/* Second row - Copy, Delete */}
-                    <div className="flex gap-2 w-full">
                       <Button 
                         variant="outline" 
-                        size="sm" 
+                        size="icon" 
                         onClick={() => copyShareUrl(form._id)}
-                        className="flex-1 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white"
+                        className="h-8 w-8 p-0 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-gray-700/50 hover:text-white rounded-lg shadow-sm flex items-center justify-center"
                       >
-                        <Copy className="w-4 h-4 mr-1" />
-                        Copy Link
+                        <Copy className="w-4 h-4" />
                       </Button>
                       <Button 
                         variant="outline" 
-                        size="sm" 
+                        size="icon" 
                         onClick={() => deleteForm(form._id)}
-                        className="flex-1 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/50"
+                        className="h-8 w-8 p-0 border-gray-600/50 bg-gray-800/30 backdrop-blur-sm text-gray-300 hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/50 rounded-lg shadow-sm flex items-center justify-center"
                       >
-                        <Trash2 className="w-4 h-4 mr-1" />
-                        Delete
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
