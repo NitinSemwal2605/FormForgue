@@ -12,8 +12,28 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(morgan('combined'));
+const allowedOrigins = [
+  'https://form-forgue.vercel.app',
+  'https://form-forgue.netlify.app'
+];
+
+// Add localhost:5173 for local development
+if (process.env.CORS_ORIGIN) {
+  allowedOrigins.push(process.env.CORS_ORIGIN);
+} else if (process.env.NODE_ENV === 'development') {
+  allowedOrigins.push('http://localhost:5173');
+}
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));

@@ -31,8 +31,14 @@ export default function PublicForm() {
     } catch (error) {
       console.error('Error fetching public form:', error)
       console.error('Error details:', error.message)
+      showToast({
+        title: 'Load Error',
+        message: error.message || 'Failed to load form',
+        details: error,
+        type: 'error',
+      })
       if (error.message.includes('Form not found')) {
-      setError('Form not found or no longer accepting responses')
+        setError('Form not found or no longer accepting responses')
       } else if (error.message.includes('Database connection error')) {
         setError('Database connection error. Please try again later.')
       } else {
@@ -89,10 +95,20 @@ export default function PublicForm() {
       showToast('Form submitted successfully!', 'success')
     } catch (error) {
       console.error('Error submitting form:', error)
+      showToast({
+        title: 'Submission Error',
+        message: error.message || 'Failed to submit form',
+        details: error,
+        type: 'error',
+      })
       if (error.message.includes('Required field')) {
         setError(error.message)
       } else if (error.message.includes('Authentication')) {
-        showToast('Please sign in to submit this form', 'error')
+        showToast({
+          title: 'Authentication Required',
+          message: 'Please sign in to submit this form',
+          type: 'error',
+        })
         navigate('/auth', { state: { redirectTo: `/form/${shareUrl}` } })
       } else {
       setError('Failed to submit form. Please try again.')

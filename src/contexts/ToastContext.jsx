@@ -14,9 +14,15 @@ export const useToast = () => {
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([])
 
-  const showToast = (message, type = 'success', duration = 5000) => {
+  const showToast = (messageOrOptions, type = 'success', duration = 5000) => {
+    let opts = {}
+    if (typeof messageOrOptions === 'string') {
+      opts = { message: messageOrOptions, type, duration }
+    } else if (typeof messageOrOptions === 'object') {
+      opts = { ...messageOrOptions }
+    }
     const id = Date.now() + Math.random()
-    const newToast = { id, message, type, duration }
+    const newToast = { id, ...opts }
     
     setToasts(prev => [...prev, newToast])
   }
@@ -38,6 +44,8 @@ export const ToastProvider = ({ children }) => {
             message={toast.message}
             type={toast.type}
             duration={toast.duration}
+            title={toast.title}
+            details={toast.details}
             onClose={() => removeToast(toast.id)}
           />
         ))}
