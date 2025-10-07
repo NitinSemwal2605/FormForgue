@@ -8,21 +8,27 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["forms", "api", "mongodb", "express"],
+  "keywords": [
+    "forms",
+    "api",
+    "mongodb",
+    "express"
+  ],
   "author": "FormForge Team",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "helmet": "^7.1.0",
-    "morgan": "^1.10.0",
     "jsonwebtoken": "^9.0.2",
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.6"
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
   }
-} 
+}

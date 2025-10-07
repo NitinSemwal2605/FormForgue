@@ -36,18 +36,21 @@ const Auth = () => {
     setLoading(true)
     try {
       if (!formData.email || !formData.password) {
-        showToast('error', 'Please enter your email and password.')
+        showToast('error', 'Email and password are required to log in.')
         setLoading(false)
         return
       }
+
       const result = await login(formData.email, formData.password)
+
       if (result.success) {
-        navigate(redirectTo)
+        showToast('success', 'Login successful. Redirecting to dashboard...')
+        setTimeout(() => navigate(redirectTo), 1000)
       } else {
-        showToast('error', result.error || 'Login failed. Please try again.')
+        showToast('error', result.error || 'Invalid credentials. Please try again.')
       }
     } catch (err) {
-      showToast('error', err.message || 'Login failed. Please try again.')
+      showToast('error', `Login error: ${err.message || 'Unexpected issue occurred.'}`)
     } finally {
       setLoading(false)
     }
@@ -57,29 +60,43 @@ const Auth = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-        showToast('error', 'Please fill in all fields.')
+      const { name, email, password, confirmPassword } = formData
+
+      if (!name || !email || !password || !confirmPassword) {
+        showToast('error', 'All fields are required for registration.')
         setLoading(false)
         return
       }
-      if (formData.password !== formData.confirmPassword) {
-        showToast('error', 'Passwords do not match')
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailPattern.test(email)) {
+        showToast('error', 'Please enter a valid email address.')
         setLoading(false)
         return
       }
-      if (formData.password.length < 6) {
-        showToast('error', 'Password must be at least 6 characters long')
+
+      if (password.length < 6) {
+        showToast('error', 'Password must be at least 6 characters long.')
         setLoading(false)
         return
       }
-      const result = await register(formData.name, formData.email, formData.password)
+
+      if (password !== confirmPassword) {
+        showToast('error', 'Passwords do not match.')
+        setLoading(false)
+        return
+      }
+
+      const result = await register(name, email, password)
+
       if (result.success) {
-        navigate(redirectTo)
+        showToast('success', 'Account created successfully. Redirecting...')
+        setTimeout(() => navigate(redirectTo), 1000)
       } else {
         showToast('error', result.error || 'Registration failed. Please try again.')
       }
     } catch (err) {
-      showToast('error', err.message || 'Registration failed. Please try again.')
+      showToast('error', `Registration error: ${err.message || 'Unexpected error occurred.'}`)
     } finally {
       setLoading(false)
     }
@@ -95,6 +112,7 @@ const Auth = () => {
           <Button onClick={() => setMode('login')} className={`w-1/2 ${mode === 'login' ? 'bg-blue-600 text-white' : 'bg-gray-800 text-blue-300'}`}>Login</Button>
           <Button onClick={() => setMode('register')} className={`w-1/2 ${mode === 'register' ? 'bg-purple-600 text-white' : 'bg-gray-800 text-purple-300'}`}>Register</Button>
         </div>
+
         {mode === 'login' ? (
           <form className="space-y-6" onSubmit={handleLogin}>
             <input
@@ -135,9 +153,17 @@ const Auth = () => {
                 )}
               </AnimatePresence>
             </div>
-            <Button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition-all shadow-md hover:scale-[1.02]" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</Button>
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition-all shadow-md hover:scale-[1.02]"
+              disabled={loading}
+            >
+              {loading ? 'Logging in...' : 'Login'}
+            </Button>
             <div className="text-right mt-2">
-              <button type="button" className="text-xs text-blue-400 hover:underline">Forgot password?</button>
+              <button type="button" className="text-xs text-blue-400 hover:underline">
+                Forgot password?
+              </button>
             </div>
           </form>
         ) : (
@@ -218,7 +244,13 @@ const Auth = () => {
                 )}
               </AnimatePresence>
             </div>
-            <Button type="submit" className="w-full bg-purple-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-purple-700 transition-all shadow-md hover:scale-[1.02]" disabled={loading}>{loading ? 'Registering...' : 'Register'}</Button>
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-purple-700 transition-all shadow-md hover:scale-[1.02]"
+              disabled={loading}
+            >
+              {loading ? 'Registering...' : 'Register'}
+            </Button>
           </form>
         )}
       </div>
